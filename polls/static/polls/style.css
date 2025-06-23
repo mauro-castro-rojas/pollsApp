@@ -1,0 +1,61 @@
+body {
+  background-color: white;
+  background-image: url("images/background.png");
+  background-repeat: no-repeat;
+  background-position: center top;     /* or “center center” */
+  background-size: cover;              /* ← make it cover the whole viewport */
+  margin: 0;                            /* reset any default body margin */
+}
+
+ul {
+  list-style: none;
+  margin: 0 auto;            
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   
+  /* justify-content: center;   */
+  /* gap: 10px; */
+}
+
+li {
+  /* sizing & centering */
+  width: 100%;
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    rgba(117, 114, 117, 0.9) 0%,
+    rgba(34, 33, 34, 0.9) 100%
+  );
+  border-radius: 12px;
+
+  /* subtle 3D shadow */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1),
+              0 1px 3px rgba(0, 0, 0, 0.08);
+
+  /* smooth transition for hover effects */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* hover “lift” */
+li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12),
+              0 3px 6px rgba(0, 0, 0, 0.10);
+}
+
+li a {
+  color: white;
+  text-decoration: none;
+  font: 2em sans-serif;
+}
+
+li a:hover {
+  color: rgb(255, 102, 199);
+}
+
