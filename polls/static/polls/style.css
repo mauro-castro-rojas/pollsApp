@@ -27,6 +27,9 @@ li {
   box-sizing: border-box;
   text-align: center;
 
+  position: relative;
+  cursor: pointer;
+
   background: linear-gradient(
     135deg,
     rgba(117, 114, 117, 0.9) 0%,
@@ -46,16 +49,39 @@ li {
 li:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12),
-              0 3px 6px rgba(0, 0, 0, 0.10);
+              0 3px 6px rgba(0, 0, 0, 0.10),
+              0 0 8px rgb(255, 102, 199);
+}
+
+li::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: shine 2s infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
 }
 
 li a {
-  color: white;
+  color: rgb(255, 102, 199);
   text-decoration: none;
   font: 2em sans-serif;
 }
 
-li a:hover {
-  color: rgb(255, 102, 199);
-}
+/* removed hover rule as color now matches default */
 
