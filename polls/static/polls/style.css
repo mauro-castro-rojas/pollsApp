@@ -1,11 +1,10 @@
 body {
-  background-color: white;
-  background-image: url("images/background.png");
-  background-repeat: no-repeat;
-  background-position: center top;     /* or “center center” */
-  background-size: cover;              /* ← make it cover the whole viewport */
-  margin: 0;                            /* reset any default body margin */
-
+    background-color: white;
+    background-image: url("images/background.png");
+    background-repeat: no-repeat;
+    background-position: center top;     /* or “center center” */
+    background-size: cover;              /* ← make it cover the whole viewport */
+    margin: 0;                            /* reset any default body margin */
 }
 
 .container {
@@ -27,17 +26,43 @@ body {
     border: none;
     background: linear-gradient(
         135deg,
-        rgba(33, 33, 33, 0.9) 0%,
-        rgba(46, 45, 45, 0.9) 100%
+        rgba(69, 69, 69, 0.9) 80%,
+        rgba(43, 42, 42, 0.9) 100%
     );
-    color: rgb(255,102,199);
+    color: rgb(255, 255, 255);
     cursor: pointer;
-    border-radius: 4px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+    transition: transform 1s ease;
+    position: relative;      /* make container for pseudo-element */
+    overflow: hidden; 
 }
 
 .button-group button:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 5px 32px rgba(255, 0, 238, 0.489);
+    transform: translateY(-3px);
 }
 
+.button-group button::before {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 90px;                     
+  background: linear-gradient(
+    120deg,
+    transparent 33%,
+    rgba(255, 255, 255, 0.072),
+    transparent 57%
+  );
+  top: 0%;                                       
+  opacity: 0;
+  transition: opacity 0.1s;        
+}
+
+.button-group button:hover::before {
+  opacity: 1;
+  animation: slide-stripe 3.5s ease-out infinite;
+}
+
+@keyframes slide-stripe {
+  from { left: -80%; }
+  to   { left: 80%; }
+}
