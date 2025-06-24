@@ -1,13 +1,18 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
-
+<body>
 {% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li class="poll-card"><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-        
-    {% endfor %}
-    </ul>
+    <div class="container">
+        <div class="button-group">
+        {% for question in latest_question_list %}
+            <button type="button" class="poll-button"
+                onclick="window.location.href='{% url "polls:detail" question.id %}'">
+                {{ question.question_text }}
+            </button>
+        {% endfor %}
+        </div>
+    </div>
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+</body>

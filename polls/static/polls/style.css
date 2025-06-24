@@ -5,83 +5,39 @@ body {
   background-position: center top;     /* or “center center” */
   background-size: cover;              /* ← make it cover the whole viewport */
   margin: 0;                            /* reset any default body margin */
+
 }
 
-ul {
-  list-style: none;
-  margin: 0 auto;            
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;   
-  /* justify-content: center;   */
-  /* gap: 10px; */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;  /* ← full viewport height */
 }
 
-li {
-  /* sizing & centering */
-  width: 100%;
-  max-width: 700px;
-  margin: 20px auto;
-  padding: 20px;
-  box-sizing: border-box;
-  text-align: center;
-
-  position: relative;
-  cursor: pointer;
-
-  background: linear-gradient(
-    135deg,
-    rgba(117, 114, 117, 0.9) 0%,
-    rgba(34, 33, 34, 0.9) 100%
-  );
-  border-radius: 12px;
-
-  /* subtle 3D shadow */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1),
-              0 1px 3px rgba(0, 0, 0, 0.08);
-
-  /* smooth transition for hover effects */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-/* hover “lift” */
-li:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12),
-              0 3px 6px rgba(0, 0, 0, 0.10),
-              0 0 8px rgb(255, 102, 199);
+.button-group button {
+    padding: 12px 24px;
+    font-size: 1.7rem;
+    border: none;
+    background: linear-gradient(
+        135deg,
+        rgba(33, 33, 33, 0.9) 0%,
+        rgba(46, 45, 45, 0.9) 100%
+    );
+    color: rgb(255,102,199);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-li::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.4) 50%,
-    transparent 100%
-  );
-  transform: translateX(-100%);
-  animation: shine 2s infinite;
-  pointer-events: none;
+.button-group button:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 5px 32px rgba(255, 0, 238, 0.489);
 }
-
-@keyframes shine {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(100%);
-  }
-}
-
-li a {
-  color: rgb(255, 102, 199);
-  text-decoration: none;
-  font: 2em sans-serif;
-}
-
-/* removed hover rule as color now matches default */
 
