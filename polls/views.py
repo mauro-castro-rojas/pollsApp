@@ -13,6 +13,9 @@ class IndexView(generic.ListView):
     context_object_name = "latest_question_list"
 
     def get_queryset(self):
+        """
+        Excludes any future and without choices questions.
+        """
         return Question.objects.annotate(num_choices=Count('choice')) \
             .filter(pub_date__lte=timezone.now(), num_choices__gt=0) \
             .order_by('-pub_date')[:10]
@@ -23,7 +26,7 @@ class DetailView(generic.DetailView):
 
     def get_queryset(self):
         """
-        Excludes any questions that aren't published yet.
+        Excludes any future and without choices questions.
         """
         return Question.objects.annotate(num_choices=Count('choice')) \
             .filter(pub_date__lte=timezone.now(), num_choices__gt=0)
@@ -31,6 +34,13 @@ class DetailView(generic.DetailView):
 class ResultsView(generic.DetailView):
     model = Question
     template_name = "polls/results.html"
+
+    def get_queryset(self):
+        """
+        Excludes any future and without choices questions.
+        """
+        return Question.objects.annotate(num_choices=Count('choice')) \
+            .filter(pub_date__lte=timezone.now(), num_choices__gt=0)
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)

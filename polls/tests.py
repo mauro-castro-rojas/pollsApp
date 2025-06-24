@@ -19,7 +19,6 @@ def add_choices_to_question(question):
     Add a default choice to a question. 
     """
     return question.choice_set.create(choice_text="Maybe", votes=0)
-     
 
 class QuestionModelTests(TestCase):
     def test_was_published_recently_with_future_question(self):
@@ -153,6 +152,45 @@ class QuestionDetailViewTests(TestCase):
         """
         past_question = create_question(question_text="Past Question.", days=-5)
         url = reverse("polls:detail", args=(past_question.id,))
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
+
+class QuestionResultViewTests(TestCase):
+    def test_past_question(self):
+        """
+        The results view of a question with a pub_date in the past
+        displays the question's text and has the question choices.
+        """
+        past_question = create_question(question_text="Past Question.", days=-5)
+        add_choices_to_question(past_question)
+        url = reverse("polls:results", args=(past_question.id,))
+        response = self.client.get(url)
+        self.assertContains(response, past_question.question_text)
+
+        choices = past_question.choice_set.all()
+        self.assertTrue(choices.exists(), "add_choices_to_question did not create any choices")
+
+        for choice in choices:
+            self.assertContains(response, choice.choice_text)
+    
+    def test_future_question(self):
+        """
+        The results view of a question with a pub_date in the future
+        returns a 404 not found.
+        """
+        future_question = create_question(question_text="Future question.", days=5)
+        add_choices_to_question(future_question)
+        url = reverse("polls:results", args=(future_question.id,))
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
+    
+    def test_past_question_without_choices(self):
+        """
+        The results view of a question with a pub_date in the past, but without choices,
+        returns a 404 not found.
+        """
+        past_question = create_question(question_text="Past Question.", days=-5)
+        url = reverse("polls:results", args=(past_question.id,))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 404)
 
