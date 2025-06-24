@@ -1,6 +1,6 @@
 from django.utils import timezone
 from django.db.models import F
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
@@ -47,7 +47,9 @@ def vote(request, question_id):
     try:
         selected_choice = question.choice_set.get(pk=request.POST["choice"])
     except (KeyError, Choice.DoesNotExist):
-        # Redisplay the question voting form.
+        # Redisplay the question voting form or return JSON error.
+        if request.headers.get("x-requested-with") == "XMLHttpRequest":
+            return JsonResponse({"error": "You didn't select a choice."}, status=400)
         return render(
             request,
             "polls/detail.html",
@@ -59,6 +61,15 @@ def vote(request, question_id):
     else:
         selected_choice.votes = F("votes") + 1
         selected_choice.save()
+        if request.headers.get("x-requested-with") == "XMLHttpRequest":
+            data = {
+                "question": question.question_text,
+                "choices": [
+                    {"id": c.id, "text": c.choice_text, "votes": c.votes}
+                    for c in question.choice_set.all()
+                ],
+            }
+            return JsonResponse(data)
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.

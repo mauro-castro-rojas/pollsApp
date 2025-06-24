@@ -66,3 +66,16 @@ body {
   from { left: -80%; }
   to   { left: 80%; }
 }
+
+/* New question card styles */
+.question-card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.question-card form {
+    margin-bottom: 1rem;
+}
