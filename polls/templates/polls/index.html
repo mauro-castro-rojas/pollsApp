@@ -5,7 +5,7 @@
 {% if latest_question_list %}
     <div class="container">
         {% for question in latest_question_list %}
-            {% include 'polls/_question_card.html' with question=question only %}
+            {% include 'polls/_question_card.html' with question=question request=request only %}
         {% endfor %}
     </div>
 {% else %}

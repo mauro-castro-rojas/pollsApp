@@ -1,7 +1,7 @@
 <div class="question-card" data-question-id="{{ question.id }}">
-    {% include 'polls/detail.html' with question=question only %}
+    {% include 'polls/detail.html' with question=question request=request only %}
     <div class="results">
-        {% include 'polls/results.html' with question=question only %}
+        {% include 'polls/results.html' with question=question request=request only %}
     </div>
 </div>
 
