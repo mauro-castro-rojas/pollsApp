@@ -17,12 +17,12 @@ body {
 .button-group {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.8rem;
 }
 
 .button-group button {
     padding: 12px 24px;
-    font-size: 1.7rem;
+    font-size: 1.3rem;
     border: none;
     background: linear-gradient(
         135deg,
