@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             const card = form.closest('.question-card');
             const resultsDiv = card.querySelector('.results');
-            // const csrf = form.querySelector('[name=csrfmiddlewaretoken]').value;
 
             function getCookie(name) {
                 let cookieValue = null;
@@ -37,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 data.choices.forEach(c => {
                     html += '<li>' + c.text + ' -- ' + c.votes + ' vote' + (c.votes === 1 ? '' : 's') + '</li>';
                 });
-                html += '</ul>';
                 resultsDiv.innerHTML = html;
             });
         });

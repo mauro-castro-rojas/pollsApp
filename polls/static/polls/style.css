@@ -8,10 +8,15 @@ body {
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;  /* ← full viewport height */
+    display: grid;
+    /* place-items: center;  */
+    justify-items: center; /* centra horizontalmente el contenido de cada celda */
+    align-items: center;  
+    grid-template-columns: repeat(5, 300px); /* 3 columnas de 150px */
+    grid-template-rows: auto auto;           /* 2 filas de altura automática */
+    gap: 20px;                               /* espacio de 20px entre celdas */
+    padding: 20px;
+    height: 100vh;                       /* make the container fill the viewport */
 }
 
 .button-group {
@@ -69,11 +74,16 @@ body {
 
 /* New question card styles */
 .question-card {
-    border: 1px solid #ccc;
     padding: 1rem;
+    width: 100%;
     margin-bottom: 1.5rem;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    background: linear-gradient(
+        135deg,
+        rgba(69, 69, 69, 0.9) 80%,
+        rgba(43, 42, 42, 0.9) 100%
+    );
+    overflow: hidden;
 }
 
 .question-card form {
