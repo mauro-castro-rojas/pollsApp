@@ -36,42 +36,43 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Intercept each vote form, send AJAX, and redraw the chart
+    document.querySelectorAll('.question-cards form').forEach(form => {
+    form.addEventListener('submit', evt => {
+        evt.preventDefault();
+        const url = form.action;
+        const formData = new FormData(form);
+        fetch(url, {
+        method: 'POST',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRFToken': csrf
+        },
+        body: formData,
+        credentials: 'same-origin'
+        })
+        .then(resp => {
+        if (!resp.ok) throw new Error('Vote failed');
+        return resp.json();
+        })
+        .then(data => {
+        if (data.error) {
+            console.error(data.error);
+            return;
+        }
+        // Extract question ID from URL: /polls/<id>/vote/
+        const qid = url.match(/\/polls\/(\d+)\/vote\//)[1];
+        const results = data.results;
+        const labels = results.map(c => c.text);
+        const votes  = results.map(c => c.votes);
+        const chart = charts[qid];
+        chart.data.labels = labels;
+        chart.data.datasets[0].data = votes;
+        chart.update();
+        })
+        .catch(err => console.error('Error submitting vote:', err));
+    });
+    });
 });
 
-// Intercept each vote form, send AJAX, and redraw the chart
-document.querySelectorAll('.question-cards form').forEach(form => {
-form.addEventListener('submit', evt => {
-    evt.preventDefault();
-    const url = form.action;
-    const formData = new FormData(form);
-    fetch(url, {
-    method: 'POST',
-    headers: {
-        'X-Requested-With': 'XMLHttpRequest',
-        'X-CSRFToken': csrf
-    },
-    body: formData,
-    credentials: 'same-origin'
-    })
-    .then(resp => {
-    if (!resp.ok) throw new Error('Vote failed');
-    return resp.json();
-    })
-    .then(data => {
-    if (data.error) {
-        console.error(data.error);
-        return;
-    }
-    // Extract question ID from URL: /polls/<id>/vote/
-    const qid = url.match(/\/polls\/(\d+)\/vote\//)[1];
-    const results = data.results;
-    const labels = results.map(c => c.text);
-    const votes  = results.map(c => c.votes);
-    const chart = charts[qid];
-    chart.data.labels = labels;
-    chart.data.datasets[0].data = votes;
-    chart.update();
-    })
-    .catch(err => console.error('Error submitting vote:', err));
-});
-});
