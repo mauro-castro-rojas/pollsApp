@@ -1,4 +1,4 @@
-
+// console.log("Choices Map:", choicesMap);
 const charts = {};
 function getCookie(name) {
     let cookieValue = null;
@@ -17,23 +17,24 @@ function getCookie(name) {
 
 const csrf = getCookie('csrftoken');
 
+document.addEventListener('DOMContentLoaded', () => {
+    Object.entries(choicesMap).forEach(([qid, jsonData]) => {
+        const data = JSON.parse(jsonData);
+        const labels = data.map(c => c.text);
+        const votes  = data.map(c => c.votes);
 
-Object.entries(choicesMap).forEach(([qid, jsonData]) => {
-    const data = JSON.parse(jsonData);
-    const labels = data.map(c => c.text);
-    const votes  = data.map(c => c.votes);
-
-    const ctx = document.getElementById(`chart-${qid}`).getContext('2d');
-    charts[qid] = new Chart(ctx, {
-        type: 'bar',
-        data: {
-        labels: labels,
-        datasets: [{
-            label: 'Votes',
-            data: votes,
-            backgroundColor: 'rgba(255,165,0,0.7)'
-        }]
-        }
+        const ctx = document.getElementById(`chart-${qid}`).getContext('2d');
+        charts[qid] = new Chart(ctx, {
+            type: 'bar',
+            data: {
+            labels: labels,
+            datasets: [{
+                label: 'Votes',
+                data: votes,
+                backgroundColor: 'rgba(255,165,0,0.7)'
+            }]
+            }
+        });
     });
 });
 
