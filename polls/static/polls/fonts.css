@@ -81,7 +81,7 @@ src:
 
 
 @font-face {
-  font-family: "josefin-sans-b";
+  font-family: "josefin-sans";
   src: url("/static/polls/fonts/JosefinSans-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
@@ -89,7 +89,7 @@ src:
 }
 
 @font-face {
-  font-family: "josefin-sans-bi";
+  font-family: "josefin-sans";
   src: url("/static/polls/fonts/JosefinSans-BoldItalic.ttf") format("truetype");
   font-weight: 700;
   font-style: italic;
@@ -97,7 +97,7 @@ src:
 }
 
 @font-face {
-  font-family: "josefin-sans-m";
+  font-family: "josefin-sans";
   src: url("/static/polls/fonts/JosefinSans-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
@@ -105,7 +105,7 @@ src:
 }
 
 @font-face {
-  font-family: "josefin-sans-mi";
+  font-family: "josefin-sans";
   src: url("/static/polls/fonts/JosefinSans-MediumItalic.ttf") format("truetype");
   font-weight: 500;
   font-style: italic;
@@ -113,7 +113,7 @@ src:
 }
 
 @font-face {
-  font-family: "josefin-sans-l";
+  font-family: "josefin-sans";
   src: url("/static/polls/fonts/JosefinSans-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
@@ -128,5 +128,16 @@ src:
         url("/static/polls/fonts/Catalish Huntera.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "catalish-huntera";
+  src:  url("/static/polls/fonts/Catalish Huntera Italic.otf") format("opentype"),
+        url("/static/polls/fonts/Catalish Huntera Italic.ttf") format("truetype"),
+        url("/static/polls/fonts/Catalish Huntera Italic.woff") format("woff"),
+        url("/static/polls/fonts/Catalish Huntera Italic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
   font-display: swap;
 }

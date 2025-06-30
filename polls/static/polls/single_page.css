@@ -9,22 +9,25 @@ body {
 
 h3 {
   font-family: "catalish-huntera";
+  font-size: 1.2rem;
 }
 
 .submt-btn {
-    font-family: "josefin-sans-m";
-    font-weight: 500;
+    font-family: "catalish-huntera";
     font-size: 1.2rem;
+    font-style: italic;
     padding: 0.5rem 1.5rem;
     border-radius: 8px;
-    background-color: #4a90e2;
     color: white;
     border: none;
     cursor: pointer;
+    background: linear-gradient(110deg, rgba(77, 120, 170, 0.916) 45%, rgba(11, 70, 230, 0.933) 100%);
 }
 
 .radio-vote {
-    font-family: "josefin-sans-l";
+    font-family: "josefin-sans";
+    font-weight: 700;
+    font-size: 1.2rem;
 }
 .question-cards {
     display: grid;
