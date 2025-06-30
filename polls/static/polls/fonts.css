@@ -1,0 +1,132 @@
+/* 
+
+###################
+font-display: swap;
+This controls how the browser shows text while your custom font is still loading:
+
+auto (default): browser chooses a strategy.
+
+block: hides text (“Flash of Invisible Text”) until font loads or a short timeout elapses.
+
+swap: immediately shows a fallback system font, then swaps in your custom font once it’s 
+ready—avoiding invisible text.
+
+fallback / optional: shorter block periods and, if font is slow, may never swap in.
+
+Using swap gives the best balance: users see readable text right away, and once “Josefin” 
+finishes downloading, the browser swaps it in. 
+
+
+#####################
+font-weight: 400;
+The font-weight property tells the browser which thickness 
+(or “weight”) of glyph outlines to use for this @font-face. 
+The numeric scale runs from 100 (hairline) up to 900 (ultra-black); by convention:
+
+100–300 → light
+
+400 → normal (regular)
+
+500–600 → medium/semi-bold
+
+700 → bold
+
+800–900 → extra-bold blacked
+
+
+
+#####################
+font-style: normal;
+The font-style property determines whether this face is upright, italic, or oblique. The three common values are:
+
+normal → upright glyphs
+
+italic → true italic designs
+
+oblique → slanted versions of the normal design
+
+
+
+
+
+
+#####################
+Format types 
+.woff2	"woff2"
+.woff	"woff"
+.ttf	"truetype"
+.otf	"opentype"
+.eot	"embedded-opentype"
+.svg	"svg" 
+
+
+
+
+
+#####################
+Why list multiple src: URLs?
+
+src:
+  url("/static/fonts/JosefinSans-Bold.ttf")       format("ttf"),
+  url("/static/fonts/JosefinSans-BoldItalic.ttf") format("ttf");
+Browser compatibility & fallbacks. In production you’ll usually list several formats—for example:
+
+src:
+  url("MyFont.woff2") format("woff2"),   
+  url("MyFont.woff")  format("woff"),    
+  url("MyFont.ttf")   format("truetype");
+  the browser picks the first format it understands.
+
+*/
+
+
+@font-face {
+  font-family: "josefin-sans-b";
+  src: url("/static/polls/fonts/JosefinSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "josefin-sans-bi";
+  src: url("/static/polls/fonts/JosefinSans-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "josefin-sans-m";
+  src: url("/static/polls/fonts/JosefinSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "josefin-sans-mi";
+  src: url("/static/polls/fonts/JosefinSans-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "josefin-sans-l";
+  src: url("/static/polls/fonts/JosefinSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "catalish-huntera";
+  src:  url("/static/polls/fonts/Catalish Huntera.otf") format("opentype"),
+        url("/static/polls/fonts/Catalish Huntera.ttf") format("truetype"),
+        url("/static/polls/fonts/Catalish Huntera.woff") format("woff"),
+        url("/static/polls/fonts/Catalish Huntera.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}

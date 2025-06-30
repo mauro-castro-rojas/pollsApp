@@ -1,6 +1,7 @@
 {# polls/all_questions.html #}
 {% load static %}
-<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+<link rel="stylesheet" href="{% static 'polls/single_page.css' %}">
+<link href="{% static 'css/fonts.css' %}" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
@@ -12,14 +13,14 @@
 
 <div class="question-cards">
   {% for question in questions %}
-    <div class="card mb-4">
-      <div class="card-body">
+    <div class="card">
+
         {# Re-use your existing form HTML exactly as in detail.html #}
         {% include "polls/_vote_form.html" with question=question error_message=None %}
 
         {# Chart container #}
         <canvas id="chart-{{ question.id }}" width="400" height="200"></canvas>
-      </div>
+
     </div>
   {% endfor %}
 </div>

@@ -1,0 +1,43 @@
+body {
+    background-color: white;
+    background-image: url("images/background.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    margin: 0;
+}
+
+h3 {
+  font-family: "catalish-huntera";
+}
+
+.submt-btn {
+    font-family: "josefin-sans-m";
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.radio-vote {
+    font-family: "josefin-sans-l";
+}
+.question-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.8rem;
+    padding: 2.5rem;
+}
+
+.card {
+    padding: 1rem;
+    border-radius: 12px;
+    background: linear-gradient(110deg, rgba(70, 70, 70, 0.916) 45%, rgba(30, 30, 30, 0.933) 100%);
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
