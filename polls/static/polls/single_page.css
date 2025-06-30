@@ -8,14 +8,15 @@ body {
 }
 
 h3 {
-  font-family: "catalish-huntera";
-  font-size: 1.2rem;
+  font-family: "flamenco";
+  font-weight: 500;
+  font-size: 2.3rem;
 }
 
 .submt-btn {
-    font-family: "catalish-huntera";
-    font-size: 1.2rem;
-    font-style: italic;
+    font-family: "flamenco";
+    font-size: 1.7rem;
+    font-weight: 500;
     padding: 0.5rem 1.5rem;
     border-radius: 8px;
     color: white;
@@ -24,11 +25,12 @@ h3 {
     background: linear-gradient(110deg, rgba(77, 120, 170, 0.916) 45%, rgba(11, 70, 230, 0.933) 100%);
 }
 
-.radio-vote {
-    font-family: "josefin-sans";
-    font-weight: 700;
+.card label {
+    font-family: "flamenco";
+    font-weight: 300;
     font-size: 1.2rem;
 }
+
 .question-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
