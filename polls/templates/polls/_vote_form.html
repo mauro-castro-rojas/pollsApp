@@ -6,16 +6,22 @@
     {% if error_message %}
       <p><strong>{{ error_message }}</strong></p>
     {% endif %}
-    {% for choice in question.choice_set.all %}
-      <label>
-        <input
-          class="radio-vote"
-          type="radio"
-          name="choice"
-          value="{{ choice.id }}"
-        > {{ choice.choice_text }}
-      </label><br>
-    {% endfor %}
-
-  <button type="submit" class="submt-btn">Vote</button>
+    <div class="form-body">
+      <div class="form-options">
+      {% for choice in question.choice_set.all %}
+        <label>
+          <input
+            class="radio-vote"
+            type="radio"
+            name="choice"
+            value="{{ choice.id }}"
+          > {{ choice.choice_text }}
+        </label>
+      {% endfor %}
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="submt-btn">Vote</button>
+      </div>
+    </div>
+ 
 </form>

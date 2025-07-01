@@ -29,11 +29,57 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
             labels: labels,
             datasets: [{
-                label: 'Votes',
-                data: votes,
-                backgroundColor: 'rgba(255,165,0,0.7)'
-            }]
+                    label: 'Votes',
+                    data: votes,
+                    backgroundColor: 'rgba(19, 241, 137, 0.99)',
+                    borderColor:   'rgb(255, 255, 255)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                plugins: {
+                legend: {
+                    labels: {
+                        color: '#fff',            
+                        font: {family: 'exo', size: 14}
+                    }
+                },
+                // title: {
+                //     display: true,
+                //     text: 'Results',
+                //     color: '#fff',                      // title color
+                //     font: {family: 'exo',size: 18,weight: 'bold'}
+                // }
+                },
+                scales: {
+                x: {
+                    grid: {
+                    color: 'rgba(255,255,255,0.2)'    // x-axis grid line color
+                    },
+                    ticks: {
+                    color: '#ffe',                    // x-axis tick (label) color
+                    font: {
+                        family: 'Courier New, monospace',
+                        size: 12
+                    }
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                    color: 'rgba(255,255,255,0.2)'    // y-axis grid line color
+                    },
+                    ticks: {
+                    color: '#efe',                    // y-axis tick color
+                    font: {
+                        family: 'Courier New, monospace',
+                        size: 12
+                    }
+                    }
+                }
+                }
             }
+            
         });
     });
 

@@ -7,28 +7,35 @@ body {
     margin: 0;
 }
 
-h3 {
-  font-family: "flamenco";
-  font-weight: 500;
-  font-size: 2.3rem;
+.card h3 {
+  font-family: "exo";
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0.6rem 0.6rem;
+}
+
+.card form {
+    margin: 0;
 }
 
 .submt-btn {
-    font-family: "flamenco";
-    font-size: 1.7rem;
+    font-family: "exo";
+    font-size: 1.1rem;
     font-weight: 500;
     padding: 0.5rem 1.5rem;
-    border-radius: 8px;
     color: white;
     border: none;
     cursor: pointer;
-    background: linear-gradient(110deg, rgba(77, 120, 170, 0.916) 45%, rgba(11, 70, 230, 0.933) 100%);
+    background: linear-gradient(135deg, rgba(53, 64, 119, 0.782) 30%, rgba(85, 86, 130, 0.933) 100%);
+    width: 100%;
+    height: 100%;
 }
 
 .card label {
-    font-family: "flamenco";
+    font-family: "exo";
     font-weight: 300;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .question-cards {
@@ -46,3 +53,32 @@ h3 {
     text-align: center;
     overflow: hidden;
 }
+
+.form-body {
+  margin: 0.7rem 0.7rem;
+  display: flex;
+  align-items: center; /* centra verticalmente si quieres */
+  gap: 0.2rem;  
+  border-color: rgba(115, 148, 177, 0.75);         /* espacio entre columnas, opcional */
+  border-width: 0.1rem; /* ancho del borde, opcional */
+  border-style: solid; /* tipo de borde, opcional */
+  border-radius: 0.5rem; /* bordes redondeados, opcional */
+  background-color: rgba(88, 105, 121, 0.75);   ;
+}
+
+.form-options {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;         
+  align-items: flex-start;
+}
+
+.form-submit {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;     
+}
+
+
