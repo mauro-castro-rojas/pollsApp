@@ -33,7 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     data: votes,
                     backgroundColor: 'rgba(19, 241, 137, 0.99)',
                     borderColor:   'rgb(255, 255, 255)',
-                    borderWidth: 2
+                    borderWidth: 2,
+                    categoryPercentage: 0.6,
+                    barPercentage: 0.5
                 }]
             },
             options: {
