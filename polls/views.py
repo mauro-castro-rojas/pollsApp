@@ -78,13 +78,8 @@ class SinglePageAppView(generic.ListView):
     context_object_name = "questions"
 
     def get_queryset(self):
-        return (
-            Question.objects
-                    .annotate(num_choices=Count("choice"))
-                    .filter(pub_date__lte=timezone.now(),
-                            num_choices__gt=0)
-                    .order_by("-pub_date")
-        )
+        return Question.objects.annotate(num_choices=Count('choice')) \
+            .filter(pub_date__lte=timezone.now(), num_choices__gt=0)
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
